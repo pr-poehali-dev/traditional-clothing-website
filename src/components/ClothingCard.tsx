@@ -1,6 +1,5 @@
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 
 interface ClothingCardProps {
   title: string;
@@ -10,23 +9,17 @@ interface ClothingCardProps {
 
 const ClothingCard = ({ title, description, image }: ClothingCardProps) => {
   return (
-    <Card className="overflow-hidden border-0 shadow-md hover:shadow-lg transition-all duration-300">
-      <div className="h-48 overflow-hidden">
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+    <Card className="overflow-hidden hover:shadow-md transition-shadow">
+      <div className="aspect-[4/3] overflow-hidden">
+        <img 
+          src={image} 
+          alt={title} 
+          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
         />
       </div>
-      <CardContent className="p-4">
-        <h3 className="font-semibold text-xl mb-2">{title}</h3>
-        <p className="text-gray-600 mb-4 text-sm">{description}</p>
-        <Button 
-          variant="outline" 
-          className="w-full border-amber-600 text-amber-600 hover:bg-amber-50"
-        >
-          Подробнее
-        </Button>
+      <CardContent className="p-6">
+        <h3 className="text-xl font-medium mb-2">{title}</h3>
+        <p className="text-dark/80 text-sm">{description}</p>
       </CardContent>
     </Card>
   );
