@@ -104,9 +104,11 @@ const Index = () => {
                   <p className="text-white/80 mb-4">{dynasty.period}</p>
                   <div className="overflow-hidden h-0 group-hover:h-auto transition-all duration-300">
                     <p className="mb-4">{dynasty.description}</p>
-                    <Button className="bg-gold hover:bg-gold/90 text-dark rounded-none text-sm">
-                      Explore Dynasty
-                    </Button>
+                    <Link to={`/dynasty/${dynasty.id}`}>
+                      <Button className="bg-gold hover:bg-gold/90 text-dark rounded-none text-sm">
+                        Explore Dynasty
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>
