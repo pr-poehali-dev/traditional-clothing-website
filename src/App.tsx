@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import DynastyPage from "./pages/DynastyPage";
 import AboutPage from "./pages/AboutPage";
 import GalleryPage from "./pages/GalleryPage";
+import GuidePage from "./pages/GuidePage";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/dynasty/:id" element={<DynastyPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/guides" element={<GuidePage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -3,12 +3,22 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Search } from "lucide-react";
+import SearchModal from "./SearchModal";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+  
+  const openSearch = () => {
+    setIsSearchOpen(true);
+  };
+  
+  const closeSearch = () => {
+    setIsSearchOpen(false);
   };
 
   return (
@@ -32,7 +42,11 @@ const Navbar = () => {
 
           {/* Действия */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className="text-white/80 hover:text-white transition-colors">
+            <button 
+              className="text-white/80 hover:text-white transition-colors"
+              onClick={openSearch}
+              aria-label="Search"
+            >
               <Search className="w-5 h-5" />
             </button>
             <Button className="bg-gold hover:bg-gold/90 text-dark rounded-none">
@@ -41,13 +55,22 @@ const Navbar = () => {
           </div>
 
           {/* Кнопка мобильного меню */}
-          <button 
-            className="md:hidden text-white"
-            onClick={toggleMenu}
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="md:hidden flex items-center space-x-4">
+            <button 
+              className="text-white/80 hover:text-white transition-colors"
+              onClick={openSearch}
+              aria-label="Search"
+            >
+              <Search className="w-5 h-5" />
+            </button>
+            <button 
+              className="text-white"
+              onClick={toggleMenu}
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -69,6 +92,9 @@ const Navbar = () => {
           </nav>
         </div>
       )}
+      
+      {/* Модальное окно поиска */}
+      <SearchModal isOpen={isSearchOpen} onClose={closeSearch} />
     </header>
   );
 };
